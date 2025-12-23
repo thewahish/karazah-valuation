@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقييم قناة كرزة - Karazah Channel Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Karazah Brand Colors from Style Guide */
+            --cherry-primary: #B7346E;  /* Main Cherry Color */
+            --cherry-dark: #8B2653;     /* Darker Cherry */
+            --cherry-light: #E98DB1;    /* Lighter Cherry */
+            --apricot: #FF8C42;         /* Apricot Orange */
+            --apricot-light: #FFB570;   /* Light Apricot */
+            --berry-blue: #2F5F8F;     /* Berry Blue */
+            --berry-light: #5A87BB;    /* Light Berry */
+            
+            /* Supporting Colors */
+            --white: #FFFFFF;
+            --cream: #FEF7F0;
+            --soft-pink: #FFF0F5;
+            --light-gray: #F5F5F5;
+            --text-dark: #2D2D2D;
+            --text-light: #6B7280;
+            
+            /* Brand Typography */
+            --brand-font: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--brand-font);
+            background: linear-gradient(135deg, var(--cream) 0%, var(--soft-pink) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Section with Karazah Branding */
+        .karazah-header {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(183, 52, 110, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .karazah-header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: var(--cherry-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .karazah-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 60px;
+            height: 60px;
+            background: var(--apricot);
+            border-radius: 50%;
+            opacity: 0.15;
+        }
+
+        .brand-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--cherry-primary);
+            border-radius: 24px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 12px 24px rgba(183, 52, 110, 0.2);
+        }
+
+        .logo-cherry {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: 50% 50% 50% 0;
+            position: relative;
+            transform: rotate(-45deg);
+        }
+
+        .logo-cherry::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 20px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 10px;
+            transform: rotate(30deg);
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--cherry-primary);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(183, 52, 110, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* Stats Cards with Fruit Theme */
+        .stats-garden {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .fruit-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fruit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .fruit-card.cherry {
+            border-top: 6px solid var(--cherry-primary);
+        }
+
+        .fruit-card.apricot {
+            border-top: 6px solid var(--apricot);
+        }
+
+        .fruit-card.berry {
+            border-top: 6px solid var(--berry-blue);
+        }
+
+        .fruit-card.special {
+            border-top: 6px solid var(--cherry-light);
+        }
+
+        .fruit-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        .cherry .fruit-icon {
+            background: linear-gradient(135deg, var(--cherry-primary), var(--cherry-light));
+        }
+
+        .apricot .fruit-icon {
+            background: linear-gradient(135deg, var(--apricot), var(--apricot-light));
+        }
+
+        .berry .fruit-icon {
+            background: linear-gradient(135deg, var(--berry-blue), var(--berry-light));
+        }
+
+        .special .fruit-icon {
+            background: linear-gradient(135deg, var(--cherry-light), var(--apricot-light));
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cherry .stat-number {
+            color: var(--cherry-primary);
+        }
+
+        .apricot .stat-number {
+            color: var(--apricot);
+        }
+
+        .berry .stat-number {
+            color: var(--berry-blue);
+        }
+
+        .special .stat-number {
+            color: var(--cherry-dark);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Progress Section with Playful Design */
+        .progress-playground {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cherry-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cherry-primary), var(--apricot));
+            border-radius: 2px;
+        }
+
+        .progress-tree {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .progress-branch {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            border-right: 6px solid var(--cherry-primary);
+        }
+
+        .progress-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-emoji {
+            font-size: 3rem;
+            margin-left: 1rem;
+        }
+
+        .progress-info h3 {
+            color: var(--cherry-primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar-container {
+            background: rgba(183, 52, 110, 0.1);
+            border-radius: 25px;
+            height: 20px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cherry-primary), var(--apricot));
+            border-radius: 25px;
+            transition: width 0.6s ease;
+            position: relative;
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Valuation Phases with Modern Karazah Style */
+        .phases-garden {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .phase-tree {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .phase-leaf {
+            background: var(--light-gray);
+            border-radius: 20px;
+            padding: 2rem;
+            border-right: 4px solid var(--text-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .phase-leaf.active {
+            background: linear-gradient(135deg, rgba(183, 52, 110, 0.05), rgba(255, 140, 66, 0.05));
+            border-right-color: var(--cherry-primary);
+        }
+
+        .phase-leaf.completed {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05));
+            border-right-color: #4CAF50;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--text-light);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-left: 1.5rem;
+        }
+
+        .phase-number.active {
+            background: linear-gradient(135deg, var(--cherry-primary), var(--cherry-light));
+        }
+
+        .phase-number.completed {
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+        }
+
+        .phase-content h4 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Deliverables Section */
+        .deliverables-orchard {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .deliverable-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .deliverable-item {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .deliverable-item:hover {
+            background: var(--soft-pink);
+            transform: translateX(8px);
+        }
+
+        .deliverable-status {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .deliverable-status.pending {
+            background: var(--text-light);
+            color: var(--white);
+        }
+
+        .deliverable-status.in-progress {
+            background: var(--apricot);
+            color: var(--white);
+        }
+
+        .deliverable-status.completed {
+            background: #4CAF50;
+            color: var(--white);
+        }
+
+        .deliverable-text {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Alert Box */
+        .cherry-alert {
+            background: linear-gradient(135deg, rgba(183, 52, 110, 0.05), rgba(255, 140, 66, 0.05));
+            border: 2px solid var(--cherry-light);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .alert-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert-title {
+            color: var(--cherry-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .alert-text {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .karazah-footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .stats-garden {
+                grid-template-columns: 1fr;
+            }
+            
+            .phase-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .phase-number {
+                margin-left: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Decorative Elements */
+        .floating-fruits {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .fruit-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .fruit-1 {
+            top: 10%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background: var(--cherry-primary);
+            animation-delay: 0s;
+        }
+
+        .fruit-2 {
+            top: 60%;
+            left: 5%;
+            width: 40px;
+            height: 40px;
+            background: var(--apricot);
+            animation-delay: 2s;
+        }
+
+        .fruit-3 {
+            bottom: 20%;
+            right: 15%;
+            width: 50px;
+            height: 50px;
+            background: var(--berry-blue);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Background Fruits -->
+    <div class="floating-fruits">
+        <div class="fruit-decoration fruit-1"></div>
+        <div class="fruit-decoration fruit-2"></div>
+        <div class="fruit-decoration fruit-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Karazah Header with Brand Identity -->
+        <header class="karazah-header">
+            <div class="brand-logo">
+                <div class="logo-cherry"></div>
+            </div>
+            <h1 class="main-title">🍒 تقييم قناة كرزة</h1>
+            <p class="subtitle">تقييم مهني شامل لقناة كرزة للأطفال</p>
+        </header>
+
+        <!-- Statistics Garden -->
+        <section class="stats-garden">
+            <div class="fruit-card cherry">
+                <div class="fruit-icon">🍒</div>
+                <div class="stat-number">749K+</div>
+                <div class="stat-label">المشتركون</div>
+            </div>
+            <div class="fruit-card apricot">
+                <div class="fruit-icon">🍑</div>
+                <div class="stat-number">317M+</div>
+                <div class="stat-label">إجمالي المشاهدات</div>
+            </div>
+            <div class="fruit-card berry">
+                <div class="fruit-icon">🫐</div>
+                <div class="stat-number">1,135</div>
+                <div class="stat-label">الفيديوهات المنشورة</div>
+            </div>
+            <div class="fruit-card special">
+                <div class="fruit-icon">✨</div>
+                <div class="stat-number">15%</div>
+                <div class="stat-label">نسبة التقدم</div>
+            </div>
+        </section>
+
+        <!-- Progress Playground -->
+        <section class="progress-playground">
+            <h2 class="section-title">🌟 حديقة التقدم</h2>
+            
+            <div class="progress-tree">
+                <div class="progress-branch">
+                    <div class="progress-header">
+                        <div class="progress-emoji">📊</div>
+                        <div class="progress-info">
+                            <h3>التقدم العام للمشروع</h3>
+                            <p>15% مكتمل - تحليل البيانات جاري</p>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 15%"></div>
+                    </div>
+                </div>
+
+                <div class="progress-branch">
+                    <div class="progress-header">
+                        <div class="progress-emoji">🎯</div>
+                        <div class="progress-info">
+                            <h3>المرحلة الحالية</h3>
+                            <p>تجميع البيانات وتحليل الأداء</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-branch">
+                    <div class="progress-header">
+                        <div class="progress-emoji">🚀</div>
+                        <div class="progress-info">
+                            <h3>الهدف الاستراتيجي</h3>
+                            <p>إنشاء تقييم موثوق لمفاوضات الشراكة مع سبيستون</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Valuation Phases Garden -->
+        <section class="phases-garden">
+            <h2 class="section-title">🌱 مراحل التقييم</h2>
+            
+            <div class="phase-tree">
+                <div class="phase-leaf active">
+                    <div class="phase-header">
+                        <div class="phase-number active">1</div>
+                        <div class="phase-content">
+                            <h4>🔍 تجميع البيانات والإعداد</h4>
+                            <p class="phase-description">
+                                جمع تحليلات القناة وبيانات الإيرادات ومعلومات المحتوى
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-leaf">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <div class="phase-content">
+                            <h4>💰 تحليل الإيرادات</h4>
+                            <p class="phase-description">
+                                تحليل مصادر الدخل الحالية والأداء التاريخي
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-leaf">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <div class="phase-content">
+                            <h4>👥 تحليل الجمهور</h4>
+                            <p class="phase-description">
+                                دراسة نمو المشتركين والتفاعل والبيانات الديموغرافية
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-leaf">
+                    <div class="phase-header">
+                        <div class="phase-number">4</div>
+                        <div class="phase-content">
+                            <h4>📈 المقارنة السوقية</h4>
+                            <p class="phase-description">
+                                مقارنة مع قنوات المحتوى العربي المشابه ومعايير الصناعة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-leaf">
+                    <div class="phase-header">
+                        <div class="phase-number">5</div>
+                        <div class="phase-content">
+                            <h4>🎯 نماذج التقييم</h4>
+                            <p class="phase-description">
+                                تطبيق منهجيات تقييم متعددة وتحليل النتائج
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-leaf">
+                    <div class="phase-header">
+                        <div class="phase-number">6</div>
+                        <div class="phase-content">
+                            <h4>📋 إنتاج التقرير</h4>
+                            <p class="phase-description">
+                                إنشاء عرض مهني ووثائق الدعم
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables Orchard -->
+        <section class="deliverables-orchard">
+            <h2 class="section-title">🎁 باقة المخرجات</h2>
+            
+            <div class="deliverable-grid">
+                <div class="deliverable-item">
+                    <div class="deliverable-status pending">📊</div>
+                    <span class="deliverable-text"><strong>تقرير التقييم الشامل</strong> - PDF مهني مع التحليل الكامل</span>
+                </div>
+
+                <div class="deliverable-item">
+                    <div class="deliverable-status pending">📈</div>
+                    <span class="deliverable-text"><strong>عرض تقديمي تنفيذي</strong> - النتائج الرئيسية ونطاق التقييم</span>
+                </div>
+
+                <div class="deliverable-item">
+                    <div class="deliverable-status pending">🔍</div>
+                    <span class="deliverable-text"><strong>دراسة التحليل المقارن</strong> - تقييم الوضع السوقي</span>
+                </div>
+
+                <div class="deliverable-item">
+                    <div class="deliverable-status pending">💼</div>
+                    <span class="deliverable-text"><strong>نماذج إسقاط الإيرادات</strong> - سيناريوهات النمو والتوقعات</span>
+                </div>
+
+                <div class="deliverable-item">
+                    <div class="deliverable-status pending">🎯</div>
+                    <span class="deliverable-text"><strong>التوصيات الاستراتيجية</strong> - فرص تحسين القيمة</span>
+                </div>
+
+                <div class="deliverable-item">
+                    <div class="deliverable-status pending">📋</div>
+                    <span class="deliverable-text"><strong>إطار جمع البيانات</strong> - تجميع التحليلات والمقاييس</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Alert -->
+        <div class="cherry-alert">
+            <div class="alert-icon">⚡</div>
+            <h3 class="alert-title">أولوية استراتيجية عالية</h3>
+            <p class="alert-text">
+                <strong>هذا التقييم مطلوب للحصول على نفوذ في شراكة سبيستون.</strong><br>
+                الإنجاز يؤثر مباشرة على جدولة مفاوضات الشراكة وفعاليتها.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="karazah-footer">
+            🍒 آخر تحديث: ديسمبر 2025 | 🤖 نظام OBAI الإيكولوجي v12.0<br>
+            💝 مصمم بحب لقناة كرزة الرائعة
+        </footer>
+    </div>
+
+    <script>
+        // Auto-update timestamp
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const timestamp = document.querySelector('.karazah-footer');
+            const timeStr = now.toLocaleString('ar-SA', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            // Add smooth entrance animations
+            const cards = document.querySelectorAll('.fruit-card');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+            });
+
+            // Add CSS for animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Interactive hover effects
+        document.querySelectorAll('.fruit-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Progress bar animation on scroll
+        const progressBars = document.querySelectorAll('.progress-bar-fill');
+        const animateProgressBars = () => {
+            progressBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    bar.style.width = bar.style.width || '15%';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateProgressBars);
+        window.addEventListener('load', animateProgressBars);
+    </script>
+</body>
+</html>
