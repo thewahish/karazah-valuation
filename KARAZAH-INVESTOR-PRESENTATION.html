@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karazah Channel - Strategic Acquisition Opportunity | SS Media Productions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* SS Productions Official Brand Colors (from Brand Guidelines) */
+            --ss-red-primary: #ee202e;      /* PANTONE P 8-48 U */
+            --ss-red-dark: #9a1220;         /* PANTONE P 8-54 U */
+            --ss-red-gradient: linear-gradient(135deg, #ee202e 0%, #9a1220 100%);
+            --ss-red-light: #ff4757;
+
+            /* Professional Neutral Colors */
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #eeeeee;
+            --gray-300: #e0e0e0;
+            --gray-400: #bdbdbd;
+            --gray-500: #9e9e9e;
+            --gray-600: #757575;
+            --gray-700: #616161;
+            --gray-800: #424242;
+            --gray-900: #212121;
+
+            /* Accent Colors */
+            --gold: #c9a227;
+            --gold-light: #f5f0e1;
+            --success: #2e7d32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Taviraj', Georgia, serif;
+            line-height: 1.7;
+            color: var(--black);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav.visible {
+            transform: translateY(0);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--ss-red-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--ss-red-gradient);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1920&q=80') center/cover;
+            opacity: 0.12;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(154,18,32,0.95) 0%, rgba(238,32,46,0.88) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            display: block;
+            line-height: 1.1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            margin-top: 0.25rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .karazah-logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff8e8e 0%, #b5306a 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .hero-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .hero-card-subtitle {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .hero-card-valuation {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .valuation-label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .valuation-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--ss-red-primary);
+            line-height: 1.1;
+        }
+
+        .valuation-range {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        .hero-card-cta {
+            display: block;
+            width: 100%;
+            background: var(--ss-red-gradient);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238,32,46,0.3);
+        }
+
+        .hero-card-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(238,32,46,0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-alt {
+            background: var(--gray-50);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .section-header.center {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--ss-red-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* Overview Section */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .overview-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .overview-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        .overview-image-stat {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .overview-content h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+        }
+
+        .overview-list {
+            list-style: none;
+        }
+
+        .overview-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .overview-list li:last-child {
+            border-bottom: none;
+        }
+
+        .overview-list-label {
+            color: var(--gray-700);
+        }
+
+        .overview-list-value {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .overview-list-value.highlight {
+            color: var(--ss-red-primary);
+            font-size: 1.1rem;
+        }
+
+        /* Valuation Table */
+        .valuation-table-wrapper {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .valuation-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .valuation-table th {
+            background: var(--ss-red-gradient);
+            color: var(--white);
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        .valuation-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            vertical-align: top;
+        }
+
+        .valuation-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .valuation-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+
+        .valuation-table .highlight-row {
+            background: var(--gold-light);
+        }
+
+        .valuation-table .highlight-row:hover {
+            background: var(--gold-light);
+        }
+
+        .table-asset-name {
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .table-asset-desc {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .table-value {
+            font-weight: 600;
+            color: var(--ss-red-primary);
+        }
+
+        .table-value-large {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .opportunity-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            border-color: var(--ss-red-primary);
+        }
+
+        .opportunity-card-image {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .opportunity-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .opportunity-card:hover .opportunity-card-image img {
+            transform: scale(1.05);
+        }
+
+        .opportunity-card-content {
+            padding: 1.75rem;
+        }
+
+        .opportunity-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .opportunity-card-revenue {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--ss-red-primary);
+            margin-bottom: 1rem;
+        }
+
+        .opportunity-card-desc {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Financial Section */
+        .financial-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .financial-chart {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .financial-chart-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--black);
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 250px;
+            padding-top: 2rem;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .chart-bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-bar {
+            width: 60px;
+            background: var(--ss-red-gradient);
+            border-radius: 8px 8px 0 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .chart-bar:hover {
+            filter: brightness(1.1);
+        }
+
+        .chart-bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--black);
+            white-space: nowrap;
+        }
+
+        .chart-bar-label {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            text-align: center;
+        }
+
+        .financial-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .metric-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--ss-red-primary);
+        }
+
+        .metric-card-label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ss-red-primary);
+        }
+
+        .metric-card-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+        }
+
+        /* Competitive Section */
+        .competitive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .competitor-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .competitor-card.featured {
+            border: 2px solid var(--ss-red-primary);
+            background: linear-gradient(180deg, rgba(238,32,46,0.03) 0%, var(--white) 100%);
+        }
+
+        .competitor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .competitor-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .competitor-badge {
+            background: var(--ss-red-gradient);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+        }
+
+        .competitor-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .competitor-stat {
+            text-align: center;
+        }
+
+        .competitor-stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ss-red-primary);
+        }
+
+        .competitor-stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        .competitor-gap {
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+
+        .competitor-gap strong {
+            color: var(--ss-red-primary);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--ss-red-gradient);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--ss-red-primary);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(238,32,46,0.3);
+            transform: translateX(-10.5px);
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 1.75rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .timeline-quarter {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ss-red-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-list li {
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        .timeline-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 6px;
+            height: 6px;
+            background: var(--ss-red-primary);
+            border-radius: 50%;
+        }
+
+        .timeline-target {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .timeline-target strong {
+            color: var(--ss-red-primary);
+        }
+
+        /* Investment CTA Section */
+        .investment-section {
+            background: var(--ss-red-gradient);
+            color: var(--white);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investment-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80') center/cover;
+            opacity: 0.1;
+        }
+
+        .investment-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .investment-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .investment-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .investment-list {
+            list-style: none;
+        }
+
+        .investment-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .investment-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .investment-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-family: 'Taviraj', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--ss-red-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--ss-red-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-stats {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .opportunity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .financial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .investment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .opportunity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .competitive-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .investment-cta {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav, .hero-background, .hero-overlay {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 2rem;
+                background: var(--white);
+                color: var(--black);
+            }
+
+            .section {
+                padding: 2rem 0;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" height="40">
+                    <defs>
+                        <linearGradient id="navGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ee202e"/>
+                            <stop offset="100%" style="stop-color:#9a1220"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 8 8 Q 22 8 22 15 Q 22 22 12 22 Q 2 22 2 29 Q 2 36 16 36" stroke="url(#navGradient)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <path d="M 18 8 Q 32 8 32 15 Q 32 22 22 22 Q 12 22 12 29 Q 12 36 26 36" stroke="url(#navGradient)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <polygon points="7,18 7,30 15,24" fill="#1a1a1a"/>
+                    <rect x="30" y="6" width="4" height="4" rx="1" fill="#1a1a1a"/>
+                    <text x="42" y="28" font-family="Taviraj, Georgia, serif" font-size="11" letter-spacing="3" fill="#1a1a1a">PRODUCTIONS</text>
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#opportunity">Opportunity</a></li>
+                <li><a href="#financials">Financials</a></li>
+                <li><a href="#competitive">Market</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#investment">Investment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span>SS Media Productions</span>
+                </div>
+                <h1>Strategic Acquisition Opportunity</h1>
+                <p class="hero-subtitle">
+                    Award-winning Arabic educational entertainment platform with 739K+ verified subscribers,
+                    310M+ total views, and proven market leadership in the fastest-growing segment of
+                    Middle Eastern digital media.
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">739K+</span>
+                        <span class="hero-stat-label">Verified Subscribers</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">310M+</span>
+                        <span class="hero-stat-label">Total Views</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">5/5</span>
+                        <span class="hero-stat-label">App Store Rating</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">2023</span>
+                        <span class="hero-stat-label">Award Winner</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="karazah-logo">K</div>
+                        <div>
+                            <div class="hero-card-title">Karazah Channel</div>
+                            <div class="hero-card-subtitle">Arabic Educational Entertainment</div>
+                        </div>
+                    </div>
+                    <div class="hero-card-valuation">
+                        <div class="valuation-label">Acquisition Value</div>
+                        <div class="valuation-amount">$2.0M</div>
+                        <div class="valuation-range">Range: $1.8M - $2.5M</div>
+                    </div>
+                    <a href="#investment" class="hero-card-cta">View Investment Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="section" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The Opportunity</span>
+                <h2 class="section-title">Market-Leading Arabic Educational Platform</h2>
+                <p class="section-subtitle">
+                    Karazah Channel represents a rare opportunity to acquire a proven, award-winning Arabic
+                    children's educational entertainment platform ready for exponential growth.
+                </p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-image">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Educational content production">
+                    <div class="overview-image-overlay">
+                        <div class="overview-image-stat">732 Videos</div>
+                        <div>High-Quality 3D Educational Content</div>
+                    </div>
+                </div>
+                <div class="overview-content">
+                    <h3>Asset Valuation Summary</h3>
+                    <ul class="overview-list">
+                        <li>
+                            <span class="overview-list-label">Subscriber Base Value</span>
+                            <span class="overview-list-value">$1.48M - $2.96M</span>
+                        </li>
+                        <li>
+                            <span class="overview-list-label">Content Library (732 videos)</span>
+                            <span class="overview-list-value">$1.46M</span>
+                        </li>
+                        <li>
+                            <span class="overview-list-label">Brand Recognition</span>
+                            <span class="overview-list-value">$500K+</span>
+                        </li>
+                        <li>
+                            <span class="overview-list-label">Team Expertise (25+ years)</span>
+                            <span class="overview-list-value">$300K+</span>
+                        </li>
+                        <li>
+                            <span class="overview-list-label">Total Acquisition Value</span>
+                            <span class="overview-list-value highlight">$1.8M - $2.5M</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="valuation-table-wrapper" style="margin-top: 4rem;">
+                <table class="valuation-table">
+                    <thead>
+                        <tr>
+                            <th>Asset Category</th>
+                            <th>Current Value</th>
+                            <th>Growth Potential</th>
+                            <th>Strategic Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="table-asset-name">Subscriber Base</div>
+                                <div class="table-asset-desc">739K verified Arabic families</div>
+                            </td>
+                            <td class="table-value">$1.48M - $2.96M</td>
+                            <td>2-3x in 3 years</td>
+                            <td>Impossible to replicate organically</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-asset-name">Content Library</div>
+                                <div class="table-asset-desc">732 high-quality 3D videos</div>
+                            </td>
+                            <td class="table-value">$1.46M</td>
+                            <td>Immediate monetization ready</td>
+                            <td>Proven content production pipeline</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-asset-name">Brand Recognition</div>
+                                <div class="table-asset-desc">Award-winning + government validation</div>
+                            </td>
+                            <td class="table-value">$500K+</td>
+                            <td>Regional expansion ready</td>
+                            <td>Cultural authenticity competitive moat</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-asset-name">Team Expertise</div>
+                                <div class="table-asset-desc">25+ years proven track record</div>
+                            </td>
+                            <td class="table-value">$300K+</td>
+                            <td>Ready for scale operations</td>
+                            <td>Spacetoon + Academy Award experience</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>
+                                <div class="table-asset-name">Total Acquisition Value</div>
+                            </td>
+                            <td class="table-value table-value-large">$1.8M - $2.5M</td>
+                            <td><strong>25x Revenue Potential</strong></td>
+                            <td><strong>First-Mover Market Position</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Opportunity Section -->
+    <section class="section section-alt" id="opportunity">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-label">Revenue Acceleration</span>
+                <h2 class="section-title">7 Proven Monetization Streams</h2>
+                <p class="section-subtitle">
+                    Multiple revenue opportunities ready for immediate activation, with total potential
+                    exceeding $2.5M annually within 3 years.
+                </p>
+            </div>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <div class="opportunity-card-image">
+                        <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&q=80" alt="Digital streaming">
+                    </div>
+                    <div class="opportunity-card-content">
+                        <h3 class="opportunity-card-title">YouTube and Digital</h3>
+                        <div class="opportunity-card-revenue">$250K/year</div>
+                        <p class="opportunity-card-desc">Optimize content strategy, increase posting frequency, platform diversification across TikTok and Instagram.</p>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-card-image">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Live entertainment">
+                    </div>
+                    <div class="opportunity-card-content">
+                        <h3 class="opportunity-card-title">Live Entertainment</h3>
+                        <div class="opportunity-card-revenue">$800K/year</div>
+                        <p class="opportunity-card-desc">Gulf market tour with 30 shows annually across UAE, Saudi Arabia, and Qatar. Peppa Pig Live generates $1.7M for 9 shows.</p>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-card-image">
+                        <img src="https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=600&q=80" alt="Educational apps">
+                    </div>
+                    <div class="opportunity-card-content">
+                        <h3 class="opportunity-card-title">Educational Apps</h3>
+                        <div class="opportunity-card-revenue">$350K/year</div>
+                        <p class="opportunity-card-desc">Subscription model $4.99-6.99/month. Arabic learning market growing 17% annually to $10.6B by 2030.</p>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-card-image">
+                        <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=600&q=80" alt="Merchandise">
+                    </div>
+                    <div class="opportunity-card-content">
+                        <h3 class="opportunity-card-title">Merchandise</h3>
+                        <div class="opportunity-card-revenue">$400K/year</div>
+                        <p class="opportunity-card-desc">3D character IP ready for licensing. Middle East toy market growing 8% to $9B by 2033. Islamic values competitive advantage.</p>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-card-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="Brand partnerships">
+                    </div>
+                    <div class="opportunity-card-content">
+                        <h3 class="opportunity-card-title">Brand Partnerships</h3>
+                        <div class="opportunity-card-revenue">$500K/year</div>
+                        <p class="opportunity-card-desc">Educational content commands 2-3x premium rates. Family-friendly brands pay $15K-$50K per sponsored video.</p>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-card-image">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&q=80" alt="Content licensing">
+                    </div>
+                    <div class="opportunity-card-content">
+                        <h3 class="opportunity-card-title">Content Licensing</h3>
+                        <div class="opportunity-card-revenue">$200K/year</div>
+                        <p class="opportunity-card-desc">License content to Netflix, Disney+, regional TV networks. Streaming platforms seeking quality Arabic children's content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Projections Section -->
+    <section class="section" id="financials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Financial Performance</span>
+                <h2 class="section-title">Projections and ROI Analysis</h2>
+                <p class="section-subtitle">
+                    Conservative projections showing clear path to profitability and significant
+                    return on investment within the first three years.
+                </p>
+            </div>
+
+            <div class="financial-grid">
+                <div class="financial-chart">
+                    <h4 class="financial-chart-title">Revenue Growth Projection</h4>
+                    <div class="chart-bars">
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 15px;">
+                                <span class="chart-bar-value">$12K</span>
+                            </div>
+                            <span class="chart-bar-label">Current</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 80px;">
+                                <span class="chart-bar-value">$725K</span>
+                            </div>
+                            <span class="chart-bar-label">Year 1</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 130px;">
+                                <span class="chart-bar-value">$1.2M</span>
+                            </div>
+                            <span class="chart-bar-label">Year 2</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 200px;">
+                                <span class="chart-bar-value">$2.5M</span>
+                            </div>
+                            <span class="chart-bar-label">Year 3</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar" style="height: 250px;">
+                                <span class="chart-bar-value">$4.5M</span>
+                            </div>
+                            <span class="chart-bar-label">Year 5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="financial-metrics">
+                    <div class="metric-card">
+                        <div class="metric-card-label">3-Year ROI</div>
+                        <div class="metric-card-value">175%</div>
+                        <div class="metric-card-desc">Conservative estimate based on diversified revenue streams</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-label">5-Year ROI</div>
+                        <div class="metric-card-value">590%</div>
+                        <div class="metric-card-desc">Aggressive growth with full market expansion</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-label">Break-Even Point</div>
+                        <div class="metric-card-value">Year 2</div>
+                        <div class="metric-card-desc">Cumulative ROI turns positive mid-Year 2</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-label">EBITDA Margin (Year 3)</div>
+                        <div class="metric-card-value">42%</div>
+                        <div class="metric-card-desc">$1.05M EBITDA on $2.5M revenue</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="valuation-table-wrapper" style="margin-top: 3rem;">
+                <table class="valuation-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Revenue</th>
+                            <th>Growth Rate</th>
+                            <th>EBITDA</th>
+                            <th>Margin</th>
+                            <th>Cumulative ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Current</td>
+                            <td>$12K</td>
+                            <td>Base</td>
+                            <td>-$50K</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Year 1</td>
+                            <td>$725K</td>
+                            <td>6,000%</td>
+                            <td>$75K</td>
+                            <td>10%</td>
+                            <td>-65%</td>
+                        </tr>
+                        <tr>
+                            <td>Year 2</td>
+                            <td>$1,200K</td>
+                            <td>66%</td>
+                            <td>$360K</td>
+                            <td>30%</td>
+                            <td>-5%</td>
+                        </tr>
+                        <tr>
+                            <td>Year 3</td>
+                            <td>$2,500K</td>
+                            <td>108%</td>
+                            <td>$1,050K</td>
+                            <td>42%</td>
+                            <td>175%</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>5-Year Target</strong></td>
+                            <td><strong>$4,500K</strong></td>
+                            <td><strong>Annual 35%</strong></td>
+                            <td><strong>$2,250K</strong></td>
+                            <td><strong>50%</strong></td>
+                            <td><strong>590%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Section -->
+    <section class="section section-alt" id="competitive">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Market Position</span>
+                <h2 class="section-title">Competitive Landscape Analysis</h2>
+                <p class="section-subtitle">
+                    Karazah occupies a unique position in the Arabic educational entertainment market
+                    with sustainable competitive advantages.
+                </p>
+            </div>
+
+            <div class="competitive-grid">
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <div class="competitor-name">Toyor Al Jannah</div>
+                    </div>
+                    <div class="competitor-stats">
+                        <div class="competitor-stat">
+                            <div class="competitor-stat-value">30M+</div>
+                            <div class="competitor-stat-label">Subscribers</div>
+                        </div>
+                        <div class="competitor-stat">
+                            <div class="competitor-stat-value">Islamic/Family</div>
+                            <div class="competitor-stat-label">Focus</div>
+                        </div>
+                        <div class="competitor-stat">
+                            <div class="competitor-stat-value">2008</div>
+                            <div class="competitor-stat-label">Established</div>
+                        </div>
+                    </div>
+                    <div class="competitor-gap">
+                        <strong>Gap:</strong> Entertainment focus, not educational. No 3D IP ownership.
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <div class="competitor-name">Spacetoon</div>
+                    </div>
+                    <div class="competitor-stats">
+                        <div class="competitor-stat">
+                            <div class="competitor-stat-value">10M+</div>
+                            <div class="competitor-stat-label">Subscribers</div>
+                        </div>
+                        <div class="competitor-stat">
+                            <div class="competitor-stat-value">Licensed</div>
+                            <div class="competitor-stat-label">Content</div>
+                        </div>
+                        <div class="competitor-stat">
+                            <div class="competitor-stat-value">2000</div>
+                            <div class="competitor-stat-label">Established</div>
+                        </div>
+                    </div>
+                    <div class="competitor-gap">
+                        <strong>Gap:</strong> Anime/licensed content, not Arabic-first education. Limited original IP.
+                    </div>
+                </div>
+
+                <div class="competitor-card featured" style="grid-column: span 2;">
+                    <div class="competitor-header">
+                        <div class="competitor-name">Karazah Channel Advantages</div>
+                        <span class="competitor-badge">Market Leader</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                        <div>
+                            <strong style="color: var(--ss-red-primary);">Award Winner</strong>
+                            <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">Mohammed bin Rashid Al Maktoum Award 2023</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--ss-red-primary);">100% Original IP</strong>
+                            <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">Own all characters for unlimited monetization</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--ss-red-primary);">Educational Focus</strong>
+                            <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">Arabic language and Islamic values alignment</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--ss-red-primary);">Diaspora Market</strong>
+                            <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">420M+ Arabic speakers, only 3% content in Arabic</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--ss-red-primary);">Proven Leadership</strong>
+                            <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">25+ years experience, former Spacetoon executive</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--ss-red-primary);">Government Recognition</strong>
+                            <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">Opens doors to partnerships and funding</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="section" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Implementation</span>
+                <h2 class="section-title">Strategic Execution Roadmap</h2>
+                <p class="section-subtitle">
+                    Systematic implementation plan with quarterly milestones designed to maximize
+                    value creation and minimize execution risk.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-quarter">Q1 2026</div>
+                        <h4 class="timeline-title">Foundation Phase</h4>
+                        <ul class="timeline-list">
+                            <li>Complete acquisition and legal transfer</li>
+                            <li>Team integration and role definition</li>
+                            <li>Platform optimization and analytics setup</li>
+                            <li>Begin app development</li>
+                        </ul>
+                        <div class="timeline-target"><strong>Target:</strong> $150K revenue, platform foundation complete</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-quarter">Q2 2026</div>
+                        <h4 class="timeline-title">Revenue Activation</h4>
+                        <ul class="timeline-list">
+                            <li>Educational app beta launch</li>
+                            <li>First live show pilot in Dubai</li>
+                            <li>Corporate sponsorship program</li>
+                            <li>Merchandise design and prototyping</li>
+                        </ul>
+                        <div class="timeline-target"><strong>Target:</strong> $200K revenue, 3 revenue streams active</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-quarter">Q3 2026</div>
+                        <h4 class="timeline-title">Regional Expansion</h4>
+                        <ul class="timeline-list">
+                            <li>Live show tour launch (15 shows)</li>
+                            <li>App full launch with subscriptions</li>
+                            <li>Merchandise manufacturing partnerships</li>
+                            <li>Content licensing negotiations</li>
+                        </ul>
+                        <div class="timeline-target"><strong>Target:</strong> $300K revenue, regional market entry</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-quarter">Q4 2026</div>
+                        <h4 class="timeline-title">Performance Optimization</h4>
+                        <ul class="timeline-list">
+                            <li>Holiday merchandise campaign</li>
+                            <li>Platform performance optimization</li>
+                            <li>Year 2 strategy and funding planning</li>
+                            <li>International market research</li>
+                        </ul>
+                        <div class="timeline-target"><strong>Target:</strong> $375K revenue, break-even trajectory</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment CTA Section -->
+    <section class="investment-section" id="investment">
+        <div class="container">
+            <div class="investment-content">
+                <div class="section-header center" style="color: white;">
+                    <span class="section-label" style="color: rgba(255,255,255,0.8);">Investment Opportunity</span>
+                    <h2 class="section-title" style="color: white;">Ready to Lead the Arabic EdTech Revolution?</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                        Join us in building the premier Arabic children's educational entertainment platform
+                    </p>
+                </div>
+
+                <div class="investment-grid">
+                    <div class="investment-card">
+                        <h4>Investment Summary</h4>
+                        <ul class="investment-list">
+                            <li><strong>Acquisition:</strong> $2.0M</li>
+                            <li><strong>Development:</strong> $1.6M over 3 years</li>
+                            <li><strong>Total Investment:</strong> $3.6M</li>
+                            <li><strong>Year 3 Revenue:</strong> $2.5M</li>
+                            <li><strong>ROI:</strong> 175% by Year 3</li>
+                        </ul>
+                    </div>
+
+                    <div class="investment-card">
+                        <h4>Strategic Benefits</h4>
+                        <ul class="investment-list">
+                            <li>Market-leading position in $10.6B market</li>
+                            <li>739K+ immediate audience access</li>
+                            <li>Award-winning brand credibility</li>
+                            <li>6 diversified revenue streams</li>
+                            <li>Cultural authenticity competitive moat</li>
+                        </ul>
+                    </div>
+
+                    <div class="investment-card">
+                        <h4>Exit Scenarios</h4>
+                        <ul class="investment-list">
+                            <li><strong>Year 5 Conservative:</strong> $25M (7x)</li>
+                            <li><strong>Year 5 Base Case:</strong> $45M (12x)</li>
+                            <li><strong>Strategic Acquisition:</strong> $75M+ (20x)</li>
+                            <li><strong>Comparable:</strong> CoComelon $3B</li>
+                            <li><strong>Market Multiple:</strong> 10-15x revenue</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="investment-cta">
+                    <a href="mailto:partner@karazahchannel.com" class="btn btn-primary">Schedule Due Diligence</a>
+                    <a href="#overview" class="btn btn-secondary">Review Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" height="35">
+                        <defs>
+                            <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ee202e"/>
+                                <stop offset="100%" style="stop-color:#9a1220"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 8 8 Q 22 8 22 15 Q 22 22 12 22 Q 2 22 2 29 Q 2 36 16 36" stroke="url(#footerGradient)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <path d="M 18 8 Q 32 8 32 15 Q 32 22 22 22 Q 12 22 12 29 Q 12 36 26 36" stroke="url(#footerGradient)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <polygon points="7,18 7,30 15,24" fill="#ffffff"/>
+                        <rect x="30" y="6" width="4" height="4" rx="1" fill="#ffffff"/>
+                        <text x="42" y="28" font-family="Taviraj, Georgia, serif" font-size="11" letter-spacing="3" fill="#ffffff">PRODUCTIONS</text>
+                    </svg>
+                    <span class="footer-text">Confidential Investment Document | December 2025</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://ss-prod.com">ss-prod.com</a>
+                    <a href="https://karazahchannel.com">karazahchannel.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation visibility on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > window.innerHeight * 0.3) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.opportunity-card, .competitor-card, .timeline-content, .metric-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

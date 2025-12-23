@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- Gradient for cherry -->
+    <radialGradient id="cherryGradient" cx="0.3" cy="0.3">
+      <stop offset="0%" style="stop-color:#FF8E8E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B5306A;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Gradient for leaves -->
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8BC34A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5A8B3A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle with Karazah signature shape -->
+  <circle cx="50" cy="50" r="45" fill="#FFF" stroke="#B5306A" stroke-width="2"/>
+  
+  <!-- Cherry body (main character) -->
+  <ellipse cx="45" cy="45" rx="15" ry="18" fill="url(#cherryGradient)" 
+           style="border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;"/>
+  
+  <!-- Cherry highlights -->
+  <ellipse cx="40" cy="38" rx="4" ry="6" fill="#FFE66D" opacity="0.6"/>
+  
+  <!-- Cherry stem -->
+  <path d="M 45 27 Q 47 20 50 15" stroke="#5A8B3A" stroke-width="3" 
+        stroke-linecap="round" fill="none"/>
+  
+  <!-- Leaf -->
+  <ellipse cx="52" cy="18" rx="6" ry="4" fill="url(#leafGradient)" 
+           transform="rotate(25 52 18)"/>
+  
+  <!-- Face elements -->
+  <!-- Eyes -->
+  <circle cx="40" cy="42" r="2" fill="#1F5F99"/>
+  <circle cx="50" cy="42" r="2" fill="#1F5F99"/>
+  
+  <!-- Eye highlights -->
+  <circle cx="40.5" cy="41.5" r="0.8" fill="#FFF"/>
+  <circle cx="50.5" cy="41.5" r="0.8" fill="#FFF"/>
+  
+  <!-- Smile -->
+  <path d="M 40 50 Q 45 55 50 50" stroke="#B5306A" stroke-width="2" 
+        stroke-linecap="round" fill="none"/>
+  
+  <!-- Arabic text "كرزة" (Karazah) -->
+  <text x="50" y="80" text-anchor="middle" font-family="Arial" font-size="12" 
+        font-weight="bold" fill="#B5306A">🍒</text>
+  
+  <!-- Educational book icon -->
+  <rect x="65" y="35" width="8" height="6" fill="#4ECDC4" rx="1"/>
+  <rect x="65" y="43" width="8" height="6" fill="#FFE66D" rx="1"/>
+  <line x1="69" y1="32" x2="69" y2="52" stroke="#1F5F99" stroke-width="1"/>
+</svg>
