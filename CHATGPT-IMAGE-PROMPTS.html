@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT/DALL-E Image Prompts - Karazah Investor Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ss-red-primary: #ee202e;
+            --ss-red-dark: #9a1220;
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #eeeeee;
+            --gray-600: #757575;
+            --gray-800: #424242;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Taviraj', Georgia, serif;
+            line-height: 1.8;
+            color: var(--black);
+            background: var(--gray-50);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--ss-red-primary) 0%, var(--ss-red-dark) 100%);
+            color: var(--white);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 3rem;
+        }
+
+        .intro {
+            background: var(--gray-100);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid var(--ss-red-primary);
+        }
+
+        .intro p {
+            color: var(--gray-800);
+            font-size: 0.95rem;
+        }
+
+        .prompt-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .prompt-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .prompt-section h2 {
+            color: var(--ss-red-dark);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .prompt-section h2::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--ss-red-primary);
+            border-radius: 50%;
+        }
+
+        .prompt-label {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .prompt-box {
+            background: var(--gray-100);
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--gray-800);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gray-200);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .alternative-label {
+            color: var(--ss-red-primary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-reference {
+            background: linear-gradient(135deg, rgba(238,32,46,0.05) 0%, rgba(154,18,32,0.08) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .character-reference h2 {
+            color: var(--ss-red-dark);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--ss-red-primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .character-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .character-card h3 {
+            color: var(--ss-red-primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .character-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .character-card li {
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+        }
+
+        .character-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 6px;
+            height: 6px;
+            background: var(--ss-red-primary);
+            border-radius: 50%;
+        }
+
+        .style-guidelines {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .style-guidelines h3 {
+            color: var(--ss-red-primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .style-guidelines ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .style-guidelines li {
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+        }
+
+        .style-guidelines li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 6px;
+            height: 6px;
+            background: var(--ss-red-primary);
+            border-radius: 50%;
+        }
+
+        .usage-section {
+            background: var(--gray-100);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .usage-section h2 {
+            color: var(--ss-red-dark);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .usage-section ol {
+            margin-left: 1.5rem;
+        }
+
+        .usage-section li {
+            padding: 0.5rem 0;
+            color: var(--gray-800);
+        }
+
+        .usage-section ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            header {
+                padding: 2rem 1.5rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .prompt-box {
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ChatGPT/DALL-E Image Prompts</h1>
+            <p>Karazah Investor Presentation | SS Media Productions</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <p>These prompts are designed to generate branded images featuring Karazah's 3D characters (Tootah - girl with pink/red hair, Mishmish - boy with brown hair) in the SS Productions brand style (colors: #ee202e red, #9a1220 dark red).</p>
+            </div>
+
+            <!-- Prompt 1 -->
+            <div class="prompt-section">
+                <h2>1. Educational Apps Section Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A professional 3D rendered mockup showing an iPad and iPhone displaying a colorful Arabic children's educational app interface. The app shows cute 3D animated characters - a girl with pink/red hair and a boy with brown hair - teaching Arabic letters. The interface has a clean, modern design with bright colors (red #ee202e as accent). Background is a soft gradient. Professional product photography style, high quality, photorealistic device mockups, studio lighting.</div>
+
+                <p class="alternative-label">Alternative (more branded):</p>
+                <div class="prompt-box">Professional product photography of a child's hands holding an iPad displaying a colorful Arabic learning app. On screen: cute 3D cartoon characters (girl with twin ponytails, boy with brown hair) surrounded by floating Arabic letters and numbers. App UI is clean and modern with red (#ee202e) accent buttons. Soft focus background showing a child-friendly learning environment. High resolution, commercial quality.</div>
+            </div>
+
+            <!-- Prompt 2 -->
+            <div class="prompt-section">
+                <h2>2. Live Entertainment / Kids Concert Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A vibrant 3D rendered scene of an indoor children's theater show. On stage are two large 3D animated character mascots - a cheerful girl with pink twin ponytails and a friendly boy with brown hair - performing for an audience. The stage has colorful LED screens, professional lighting in warm tones. Audience of diverse Arab families with children watching excitedly. Modern arena setting. Professional event photography style, high quality 3D rendering.</div>
+
+                <p class="alternative-label">Alternative:</p>
+                <div class="prompt-box">Professional photograph of a children's live entertainment show in a modern Gulf region venue. Large colorful stage with 3D character mascots performing, professional LED backdrop showing animated scenes. Excited young audience of Arab children and families. Red (#ee202e) brand colors incorporated in stage design. High energy, professional event photography, wide angle shot.</div>
+            </div>
+
+            <!-- Prompt 3 -->
+            <div class="prompt-section">
+                <h2>3. Merchandise Section Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A professional product photography flat lay of children's merchandise featuring cute 3D animated characters. Items include: plush toys of a girl character with pink hair and boy character with brown hair, colorful t-shirts with character prints, educational flashcards with Arabic letters, a backpack, and a lunchbox. Clean white background, studio lighting, high-end e-commerce photography style. Red (#ee202e) brand color accents throughout.</div>
+
+                <p class="alternative-label">Alternative:</p>
+                <div class="prompt-box">Lifestyle product photography showing premium children's merchandise on a styled wooden shelf. Soft plush toys of two cute 3D characters (girl with ponytails, boy with brown hair), branded clothing, educational toys, and books. Warm lighting, child's bedroom setting. Professional catalog photography style, high resolution.</div>
+            </div>
+
+            <!-- Prompt 4 -->
+            <div class="prompt-section">
+                <h2>4. YouTube/Digital Platform Card Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A modern 3D illustration showing a floating YouTube play button surrounded by cute 3D animated child characters - a girl with pink/red ponytails and a boy with brown hair. They appear excited and engaged, with floating subscriber numbers, view counts, and engagement metrics around them. Dynamic composition with red (#ee202e) and white color scheme. Clean professional digital marketing style, high quality 3D render.</div>
+            </div>
+
+            <!-- Prompt 5 -->
+            <div class="prompt-section">
+                <h2>5. Brand Partnerships Section Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A professional corporate illustration showing a business handshake in the foreground with 3D animated children's characters (girl with pink hair, boy with brown hair) visible on screens/displays in the background. Modern conference room setting with red (#ee202e) accent colors. Clean, professional aesthetic suitable for investor presentations. Corporate photography meets 3D animation style.</div>
+            </div>
+
+            <!-- Prompt 6 -->
+            <div class="prompt-section">
+                <h2>6. Content Licensing Section Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A sophisticated 3D visualization of content distribution showing multiple screens (TV, tablet, phone, laptop) all displaying the same cute 3D animated characters - a girl with pink/red ponytails and a boy with brown hair. Screens are arranged in a floating, modern composition. Netflix, streaming, and TV icons subtly visible. Professional tech/media industry aesthetic with red (#ee202e) accents. High quality digital art.</div>
+            </div>
+
+            <!-- Prompt 7 -->
+            <div class="prompt-section">
+                <h2>7. Hero Section / Channel Overview Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A vibrant 3D animated scene featuring two cheerful cartoon children characters - a girl with pink/red twin ponytails wearing a red dress and a boy with brown hair wearing blue - standing in a colorful educational environment. Arabic letters, numbers, and educational elements float playfully around them. Bright, professional 3D Pixar-quality rendering. Background suggests a magical learning world. Brand colors: red (#ee202e) and complementary bright tones.</div>
+            </div>
+
+            <!-- Prompt 8 -->
+            <div class="prompt-section">
+                <h2>8. SS Media Productions Company Image</h2>
+                <p class="prompt-label">Primary Prompt:</p>
+                <div class="prompt-box">A professional corporate hero image showing a modern media production studio environment. In the foreground, 3D animated character models (girl with pink ponytails, boy with brown hair) are shown on animation software screens. Behind them, a team silhouette works on production. Red (#ee202e) brand accents throughout. Clean, professional aesthetic combining technology and creativity. Corporate photography style with 3D elements.</div>
+            </div>
+
+            <!-- Character Reference -->
+            <div class="character-reference">
+                <h2>Character Reference Notes</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--gray-800);">For consistent Karazah character representation:</p>
+
+                <div class="character-grid">
+                    <div class="character-card">
+                        <h3>Tootah (Girl Character)</h3>
+                        <ul>
+                            <li>Pink/red twin ponytails</li>
+                            <li>Big expressive eyes</li>
+                            <li>Red or pink outfit</li>
+                            <li>Cheerful, friendly expression</li>
+                            <li>Age appearance: 5-7 years</li>
+                        </ul>
+                    </div>
+
+                    <div class="character-card">
+                        <h3>Mishmish (Boy Character)</h3>
+                        <ul>
+                            <li>Brown hair, slightly messy</li>
+                            <li>Friendly round face</li>
+                            <li>Blue or green outfit</li>
+                            <li>Playful, curious expression</li>
+                            <li>Age appearance: 5-7 years</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="style-guidelines">
+                    <h3>Style Guidelines</h3>
+                    <ul>
+                        <li>Pixar/Disney-quality 3D rendering</li>
+                        <li>Bright, saturated colors</li>
+                        <li>Child-friendly, non-threatening expressions</li>
+                        <li>Educational/wholesome atmosphere</li>
+                        <li>Arabic cultural elements when appropriate</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Usage Instructions -->
+            <div class="usage-section">
+                <h2>Usage Instructions</h2>
+                <ol>
+                    <li>Use these prompts in ChatGPT with DALL-E or Midjourney</li>
+                    <li>Request 16:9 aspect ratio for presentation images</li>
+                    <li>Request square aspect ratio for card images</li>
+                    <li>Always review generated images for:
+                        <ul>
+                            <li>Character consistency</li>
+                            <li>Brand color accuracy (#ee202e red)</li>
+                            <li>Professional quality suitable for investor presentation</li>
+                            <li>Cultural appropriateness for Arabic market</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <footer>
+            Created for Karazah Channel Investor Presentation - December 2025<br>
+            SS Media Productions
+        </footer>
+    </div>
+</body>
+</html>
