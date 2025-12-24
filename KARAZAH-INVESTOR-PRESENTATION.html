@@ -1039,6 +1039,74 @@
                 gap: 1.5rem;
                 text-align: center;
             }
+
+            /* Responsive Tables - Horizontal Scroll */
+            table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Table container scrolling */
+            .valuation-table-wrapper,
+            div[style*="border-radius: 16px"] > table,
+            div[style*="border-radius: 12px"] > table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Ensure inline tables scroll */
+            div[style*="padding: 2rem"] {
+                overflow-x: auto;
+            }
+
+            /* 2-column grids to single column */
+            div[style*="grid-template-columns: repeat(2"] {
+                display: block !important;
+            }
+            div[style*="grid-template-columns: repeat(2"] > div {
+                margin-bottom: 1rem;
+            }
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                display: block !important;
+            }
+            div[style*="grid-template-columns: 1fr 1fr"] > div {
+                margin-bottom: 1rem;
+            }
+
+            /* 3-column grids to single column */
+            div[style*="grid-template-columns: repeat(3"] {
+                display: block !important;
+            }
+            div[style*="grid-template-columns: repeat(3"] > div {
+                margin-bottom: 1rem;
+            }
+
+            /* Table scroll wrapper */
+            .table-scroll-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -0.5rem;
+                padding: 0 0.5rem;
+                position: relative;
+            }
+
+            /* Ensure tables don't collapse */
+            table {
+                min-width: 500px;
+            }
+
+            /* Scroll indicator shadow */
+            .table-scroll-wrapper::after {
+                content: '← swipe →';
+                display: block;
+                text-align: center;
+                font-size: 0.7rem;
+                color: #999;
+                padding: 0.5rem 0 0;
+            }
         }
 
         /* Print Styles */
@@ -3188,6 +3256,35 @@
                     tooltip.style.top = top + 'px';
                     tooltip.classList.add('active');
                 }
+            }
+        });
+
+        // Mobile Table Scroll Fix - Wrap all tables in scrollable containers
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('table').forEach(table => {
+                // Skip if already wrapped
+                if (table.parentElement.classList.contains('table-scroll-wrapper')) return;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'table-scroll-wrapper';
+                wrapper.style.cssText = 'overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -0.5rem; padding: 0 0.5rem;';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            });
+        }
+
+        // Re-check on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('table:not(.table-scroll-wrapper table)').forEach(table => {
+                    if (table.parentElement.classList.contains('table-scroll-wrapper')) return;
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'table-scroll-wrapper';
+                    wrapper.style.cssText = 'overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -0.5rem; padding: 0 0.5rem;';
+                    table.parentNode.insertBefore(wrapper, table);
+                    wrapper.appendChild(table);
+                });
             }
         });
     </script>
