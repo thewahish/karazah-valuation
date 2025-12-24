@@ -1017,15 +1017,26 @@
         }
 
         @media (max-width: 768px) {
-            /* Global mobile fixes */
+            /* ============================================
+               COMPREHENSIVE MOBILE FIXES
+               ============================================ */
+
+            /* Global text overflow prevention */
             * {
                 max-width: 100%;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+
+            body {
+                overflow-x: hidden !important;
             }
 
             .container {
                 padding: 0 1rem !important;
                 max-width: 100% !important;
                 width: 100% !important;
+                overflow-x: hidden !important;
             }
 
             /* Hero section mobile fixes */
@@ -1059,6 +1070,7 @@
 
             .section {
                 padding: 3rem 0;
+                overflow-x: hidden !important;
             }
 
             .section-title {
@@ -1130,97 +1142,179 @@
                 font-size: 0.75rem !important;
             }
 
-            /* Cards and boxes */
-            div[style*="padding: 2rem"] {
+            /* ============================================
+               CARDS & BOXES - Text overflow fix
+               ============================================ */
+            div[style*="padding: 2rem"],
+            div[style*="padding: 2.5rem"],
+            div[style*="padding: 1.75rem"],
+            div[style*="background: white"],
+            div[style*="background: var(--white)"],
+            div[style*="border-radius"] {
                 padding: 1rem !important;
+                overflow: hidden !important;
+                word-wrap: break-word !important;
             }
 
-            div[style*="padding: 2.5rem"] {
-                padding: 1.25rem !important;
+            /* All paragraphs in cards */
+            div[style*="background"] p,
+            div[style*="border-radius"] p {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
             }
 
-            div[style*="padding: 1.75rem"] {
-                padding: 1rem !important;
-            }
-
-            /* 2-column grids to single column */
-            div[style*="grid-template-columns: repeat(2"] {
-                display: block !important;
-            }
-            div[style*="grid-template-columns: repeat(2"] > div {
-                margin-bottom: 1rem;
-            }
-            div[style*="grid-template-columns: 1fr 1fr"] {
-                display: block !important;
-            }
-            div[style*="grid-template-columns: 1fr 1fr"] > div {
-                margin-bottom: 1rem;
-            }
-
-            /* 3-column grids to single column */
-            div[style*="grid-template-columns: repeat(3"] {
-                display: block !important;
-            }
-            div[style*="grid-template-columns: repeat(3"] > div {
-                margin-bottom: 1rem;
-            }
-
-            /* Table scroll wrapper */
-            .table-scroll-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin: 0 -0.5rem;
-                padding: 0 0.5rem;
-                position: relative;
-            }
-
-            /* Ensure tables scroll properly */
-            table {
-                display: block;
-                width: 100%;
-                min-width: 450px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            /* Scroll indicator */
-            .table-scroll-wrapper::after {
-                content: '← swipe →';
-                display: block;
-                text-align: center;
-                font-size: 0.7rem;
-                color: #999;
-                padding: 0.5rem 0 0;
-            }
-
-            /* Fix inline style overflows */
+            /* ============================================
+               GRID LAYOUTS - Force single column
+               ============================================ */
+            div[style*="grid-template-columns: repeat(2"],
+            div[style*="grid-template-columns: 1fr 1fr"],
+            div[style*="grid-template-columns: repeat(3"],
             div[style*="display: grid"] {
                 display: block !important;
             }
 
-            div[style*="display: flex"][style*="gap"] {
-                flex-wrap: wrap;
+            div[style*="grid-template-columns"] > div,
+            div[style*="display: grid"] > div {
+                margin-bottom: 1rem;
+                width: 100% !important;
             }
 
-            /* Image containers */
-            .overview-image img {
+            /* ============================================
+               FLEX LAYOUTS - Wrap and stack
+               ============================================ */
+            div[style*="display: flex"] {
+                flex-wrap: wrap !important;
+            }
+
+            div[style*="display: flex"][style*="gap"] {
+                gap: 0.75rem !important;
+            }
+
+            /* Force flex items to full width when stacking */
+            div[style*="display: flex"][style*="justify-content: space-between"] {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
+            /* ============================================
+               COMPETITOR STATS - Stack vertically
+               ============================================ */
+            /* Stats row with multiple items (30M+, Islamic/Family, 2008) */
+            div[style*="display: flex"][style*="gap: 2rem"],
+            div[style*="display: flex"][style*="gap: 3rem"] {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+                align-items: flex-start !important;
+            }
+
+            /* ============================================
+               TABLES - Scrollable with indicator
+               ============================================ */
+            .table-scroll-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -1rem;
+                padding: 0 1rem;
+                position: relative;
+            }
+
+            table {
+                display: table !important;
+                width: max-content !important;
+                min-width: 500px !important;
+                font-size: 0.75rem !important;
+            }
+
+            th, td {
+                padding: 0.5rem 0.4rem !important;
+                white-space: nowrap !important;
+            }
+
+            /* First column can wrap */
+            td:first-child, th:first-child {
+                white-space: normal !important;
+                min-width: 120px !important;
+                max-width: 150px !important;
+            }
+
+            /* Swipe hint for tables */
+            .table-scroll-wrapper::after {
+                content: '← Swipe to see more →';
+                display: block;
+                text-align: center;
+                font-size: 0.7rem;
+                color: #999;
+                padding: 0.75rem 0 0;
+                font-style: italic;
+            }
+
+            /* ============================================
+               IMAGE CONTAINERS
+               ============================================ */
+            .overview-image img,
+            img {
+                max-width: 100% !important;
                 height: auto !important;
             }
 
-            /* Font size adjustments */
-            div[style*="font-size: 2rem"] {
-                font-size: 1.5rem !important;
+            /* ============================================
+               FONT SIZE ADJUSTMENTS
+               ============================================ */
+            div[style*="font-size: 2rem"],
+            span[style*="font-size: 2rem"] {
+                font-size: 1.25rem !important;
             }
 
-            div[style*="font-size: 1.75rem"] {
-                font-size: 1.25rem !important;
+            div[style*="font-size: 1.75rem"],
+            span[style*="font-size: 1.75rem"] {
+                font-size: 1.1rem !important;
+            }
+
+            div[style*="font-size: 1.5rem"],
+            span[style*="font-size: 1.5rem"] {
+                font-size: 1rem !important;
+            }
+
+            h3 {
+                font-size: 1.1rem !important;
+            }
+
+            h4 {
+                font-size: 1rem !important;
+            }
+
+            /* ============================================
+               SPECIFIC CONTENT FIXES
+               ============================================ */
+            /* Advantages section - ensure text wraps */
+            div[style*="border-left: 4px solid"] {
+                padding: 1rem !important;
+            }
+
+            div[style*="border-left: 4px solid"] p {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+            }
+
+            /* Award/credential items */
+            div[style*="margin-bottom: 1.5rem"] h4,
+            div[style*="margin-bottom: 1.25rem"] h4 {
+                font-size: 0.95rem !important;
+            }
+
+            div[style*="margin-bottom: 1.5rem"] p,
+            div[style*="margin-bottom: 1.25rem"] p {
+                font-size: 0.85rem !important;
             }
         }
 
-        /* Extra small screens (iPhone SE, etc.) */
+        /* ============================================
+           EXTRA SMALL SCREENS (iPhone SE 375px)
+           ============================================ */
         @media (max-width: 400px) {
             .hero h1 {
-                font-size: 1.4rem !important;
+                font-size: 1.3rem !important;
             }
 
             .hero-content {
@@ -1236,15 +1330,39 @@
             }
 
             .section-title {
-                font-size: 1.25rem !important;
+                font-size: 1.15rem !important;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem !important;
             }
 
             table {
-                font-size: 0.7rem !important;
+                font-size: 0.65rem !important;
+                min-width: 400px !important;
             }
 
             th, td {
-                padding: 0.4rem 0.3rem !important;
+                padding: 0.35rem 0.25rem !important;
+            }
+
+            td:first-child, th:first-child {
+                min-width: 90px !important;
+                max-width: 110px !important;
+            }
+
+            h3 {
+                font-size: 1rem !important;
+            }
+
+            div[style*="font-size: 2rem"],
+            span[style*="font-size: 2rem"] {
+                font-size: 1.1rem !important;
+            }
+
+            div[style*="font-size: 1.75rem"],
+            span[style*="font-size: 1.75rem"] {
+                font-size: 1rem !important;
             }
         }
 
