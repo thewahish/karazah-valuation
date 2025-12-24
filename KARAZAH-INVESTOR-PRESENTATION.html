@@ -1075,6 +1075,88 @@
         .animate-in {
             animation: fadeInUp 0.6s ease forwards;
         }
+
+        /* Citation Tooltip Styles */
+        .citation-ref {
+            cursor: pointer;
+            color: var(--ss-red-primary);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .citation-ref:hover {
+            color: var(--ss-red-dark);
+            text-decoration: underline;
+        }
+        .citation-tooltip {
+            position: fixed;
+            background: white;
+            border: 2px solid var(--ss-red-primary);
+            border-radius: 12px;
+            padding: 1.25rem;
+            max-width: 450px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 10000;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+        }
+        .citation-tooltip.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .citation-tooltip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .citation-tooltip-number {
+            background: var(--ss-red-primary);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .citation-tooltip-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-600);
+            line-height: 1;
+            padding: 0;
+            transition: color 0.2s;
+        }
+        .citation-tooltip-close:hover {
+            color: var(--ss-red-primary);
+        }
+        .citation-tooltip-content {
+            color: var(--gray-700);
+        }
+        .citation-tooltip-content a {
+            color: var(--ss-red-primary);
+        }
+        .citation-tooltip-content strong {
+            color: var(--black);
+        }
+        @media (max-width: 768px) {
+            .citation-tooltip {
+                max-width: calc(100vw - 2rem);
+                left: 1rem !important;
+                right: 1rem !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2330,28 +2412,158 @@
 
             <!-- DCF Methodology Section -->
             <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e6f4ff 100%); border-radius: 16px; padding: 2rem; border: 2px solid rgba(59,130,246,0.3); margin-bottom: 2rem;">
-                <h4 style="margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.2rem;">DCF Valuation Methodology</h4>
+                <h4 style="margin-bottom: 1.5rem; color: #1e3a8a; font-size: 1.2rem;">DCF Valuation Methodology (Build-Up Method)</h4>
+
+                <!-- Key Metrics Row -->
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
                     <div style="background: white; padding: 1.25rem; border-radius: 12px; text-align: center;">
-                        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1e40af; margin-bottom: 0.5rem;">Discount Rate</div>
-                        <div style="font-size: 2rem; font-weight: 700; color: #1e3a8a;">25%</div>
-                        <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 0.5rem;">MENA private company risk premium per <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html" target="_blank" style="color: var(--ss-red-primary);">Damodaran (NYU)</a></div>
+                        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1e40af; margin-bottom: 0.5rem;">Target Discount Rate</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #1e3a8a;">19-23%</div>
+                        <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 0.5rem;">Private company build-up method</div>
                     </div>
                     <div style="background: white; padding: 1.25rem; border-radius: 12px; text-align: center;">
                         <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1e40af; margin-bottom: 0.5rem;">Terminal Growth</div>
                         <div style="font-size: 2rem; font-weight: 700; color: #1e3a8a;">3%</div>
-                        <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 0.5rem;">Conservative long-term growth rate aligned with GDP</div>
+                        <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 0.5rem;">Conservative long-term growth aligned with GDP</div>
                     </div>
                     <div style="background: white; padding: 1.25rem; border-radius: 12px; text-align: center;">
                         <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1e40af; margin-bottom: 0.5rem;">DLOM Applied</div>
                         <div style="font-size: 2rem; font-weight: 700; color: #1e3a8a;">30%</div>
-                        <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 0.5rem;">Discount for Lack of Marketability per <a href="https://www.investopedia.com/terms/d/dlom.asp" target="_blank" style="color: var(--ss-red-primary);">Investopedia</a></div>
+                        <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 0.5rem;">Discount for Lack of Marketability</div>
                     </div>
                 </div>
-                <p style="font-size: 0.9rem; color: #1e40af; line-height: 1.7;">
-                    DCF analysis triangulates with asset-based and comparable transaction valuations. The 25% discount rate reflects:
-                    (1) MENA region country risk premium, (2) Private company illiquidity, (3) Single-platform dependency (YouTube).
-                    30% DLOM applied for private company status and lack of ready market for minority stake.
+
+                <!-- Build-Up Method Table -->
+                <div style="background: white; padding: 1.25rem; border-radius: 12px; margin-bottom: 1rem;">
+                    <h5 style="color: #1e3a8a; margin-bottom: 1rem; font-size: 1rem;">Discount Rate Build-Up Calculation</h5>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                        <thead>
+                            <tr style="background: #dbeafe;">
+                                <th style="padding: 0.6rem; text-align: left; border: 1px solid #93c5fd;">Component</th>
+                                <th style="padding: 0.6rem; text-align: center; border: 1px solid #93c5fd;">Rate</th>
+                                <th style="padding: 0.6rem; text-align: left; border: 1px solid #93c5fd;">Source</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Risk-Free Rate (US 10Y Treasury)</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600;">4.17%</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;"><a href="https://www.investing.com/rates-bonds/u.s.-10-year-bond-yield" target="_blank" style="color: var(--ss-red-primary);">Investing.com</a></td>
+                            </tr>
+                            <tr style="background: var(--gray-50);">
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Equity Risk Premium (Mature Market)</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600;">4.60%</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;"><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histimpl.html" target="_blank" style="color: var(--ss-red-primary);">Damodaran ERP</a></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Country Risk Premium (Saudi Arabia/MENA)</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600;">0.60-0.80%</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;"><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html" target="_blank" style="color: var(--ss-red-primary);">Damodaran CRP</a></td>
+                            </tr>
+                            <tr style="background: var(--gray-50);">
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Size Premium (Micro-Cap &lt;$200M)</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600;">3.50-5.00%</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;"><a href="https://www.kroll.com/en/reports/cost-of-capital/recommended-us-equity-risk-premium-and-corresponding-risk-free-rates" target="_blank" style="color: var(--ss-red-primary);">Kroll Size Premium</a></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Company Specific Risk (Alpha)</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600;">5.00-8.00%</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Platform concentration + key person risk</td>
+                            </tr>
+                            <tr style="background: #dbeafe; font-weight: 700;">
+                                <td style="padding: 0.6rem; border: 1px solid #93c5fd;">Total Discount Rate</td>
+                                <td style="padding: 0.6rem; border: 1px solid #93c5fd; text-align: center; color: #1e3a8a; font-size: 1.1rem;">18.87-22.57%</td>
+                                <td style="padding: 0.6rem; border: 1px solid #93c5fd;">Rounded: 19-23%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.85rem; color: #1e40af; line-height: 1.7; margin: 0;">
+                    <strong>Why not use public market WACC (8-10%)?</strong> Private company discount rates must reflect additional risks:
+                    (1) 100% platform dependency (YouTube), (2) Key person risk (founder expertise), (3) Single geographic/linguistic market,
+                    (4) No ready market for minority stake. The 30% DLOM per <a href="https://www.investopedia.com/terms/d/dlom.asp" target="_blank" style="color: var(--ss-red-primary);">Investopedia</a> /
+                    <a href="https://www.grantthornton.co.uk/insights/when-to-apply-a-discount-for-lack-of-marketability/" target="_blank" style="color: var(--ss-red-primary);">Grant Thornton</a>
+                    is applied to final equity value for illiquidity.
+                </p>
+            </div>
+
+            <!-- COPPA Explanation Section -->
+            <div style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-radius: 16px; padding: 2rem; border: 2px solid rgba(239,68,68,0.3); margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 1.5rem; color: #991b1b; font-size: 1.2rem;">Understanding COPPA: Critical Impact on Kids Content Monetization</h4>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <!-- What is COPPA -->
+                    <div style="background: white; padding: 1.25rem; border-radius: 12px;">
+                        <h5 style="color: #991b1b; margin-bottom: 0.75rem; font-size: 1rem;">What is COPPA?</h5>
+                        <p style="font-size: 0.85rem; color: var(--gray-700); line-height: 1.6; margin: 0;">
+                            The <strong>Children's Online Privacy Protection Act</strong> is a U.S. federal law enacted in 1998 (updated 2013) that protects children under 13 by requiring verifiable parental consent before collecting personal data. Following the <strong>2019 FTC settlement with YouTube</strong> ($170M fine), all "Made for Kids" content became subject to strict compliance requirements effective January 2020.
+                        </p>
+                    </div>
+
+                    <!-- Why It Matters -->
+                    <div style="background: white; padding: 1.25rem; border-radius: 12px;">
+                        <h5 style="color: #991b1b; margin-bottom: 0.75rem; font-size: 1rem;">Why It Matters for Karazah</h5>
+                        <p style="font-size: 0.85rem; color: var(--gray-700); line-height: 1.6; margin: 0;">
+                            Karazah Channel is classified as <strong>"Made for Kids"</strong> content, triggering automatic COPPA compliance. This fundamentally changes monetization potential compared to general audience channels, requiring adjusted revenue projections and valuation methodology.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Impact Table -->
+                <div style="background: white; padding: 1.25rem; border-radius: 12px; margin-bottom: 1rem;">
+                    <h5 style="color: #991b1b; margin-bottom: 1rem; font-size: 1rem;">COPPA Impact on YouTube Monetization</h5>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                        <thead>
+                            <tr style="background: #fecaca;">
+                                <th style="padding: 0.6rem; text-align: left; border: 1px solid #fca5a5;">Feature</th>
+                                <th style="padding: 0.6rem; text-align: center; border: 1px solid #fca5a5;">General Content</th>
+                                <th style="padding: 0.6rem; text-align: center; border: 1px solid #fca5a5;">Made for Kids</th>
+                                <th style="padding: 0.6rem; text-align: left; border: 1px solid #fca5a5;">Revenue Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Personalized Ads</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #166534;">✓ Enabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #dc2626; font-weight: 600;">✗ Disabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; color: #dc2626;"><strong>50-70% CPM reduction</strong></td>
+                            </tr>
+                            <tr style="background: var(--gray-50);">
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Notification Bell</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #166534;">✓ Enabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #dc2626; font-weight: 600;">✗ Disabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Lower return viewership</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Comments Section</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #166534;">✓ Enabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #dc2626; font-weight: 600;">✗ Disabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Reduced engagement signals</td>
+                            </tr>
+                            <tr style="background: var(--gray-50);">
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">End Screens/Cards</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #166534;">✓ Enabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; color: #dc2626; font-weight: 600;">✗ Disabled</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Lower session duration</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.6rem; border: 1px solid #eee;">Typical CPM Range</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600; color: #166534;">$3.00 - $5.00</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600; color: #dc2626;">$0.20 - $0.50</td>
+                                <td style="padding: 0.6rem; border: 1px solid #eee; color: #dc2626;"><strong>~90% lower revenue per view</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size: 0.85rem; color: #991b1b; line-height: 1.7; margin: 0;">
+                    <strong>Valuation Implication:</strong> All revenue projections in this document use COPPA-adjusted CPM/RPM rates ($0.20-$0.55 vs. general audience $3-$5).
+                    Subscriber valuations are similarly adjusted ($0.50-$1.00/sub vs. $2-$4/sub for general audience channels).
+                    This is why diversification beyond YouTube ad revenue (apps, live shows, licensing) is critical for value creation.
+                    Sources: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4430334" target="_blank" style="color: var(--ss-red-primary);">COPPAcalypse Study (SSRN)</a>,
+                    <a href="https://www.ftc.gov/news-events/news/press-releases/2019/09/google-youtube-will-pay-record-170-million-alleged-violations-childrens-privacy-law" target="_blank" style="color: var(--ss-red-primary);">FTC Settlement</a>,
+                    <a href="https://www.reddit.com/r/PartneredYoutube/comments/173532d/kids_content_creators_is_your_rpm_this_bad/" target="_blank" style="color: var(--ss-red-primary);">Creator RPM Data</a>
                 </p>
             </div>
 
@@ -2403,6 +2615,82 @@
                 <p style="font-size: 0.8rem; color: var(--gray-600); margin-top: 1rem; font-style: italic;">
                     Source: Reddit community data, industry benchmarks. Current actual RPM: $0.40-$0.55 (aligns with Tier 2 majority traffic).
                     <a href="https://www.reddit.com/r/NewTubers/comments/1fuabdl/youtube_channel_made_for_kids_and_monetization/" target="_blank" style="color: var(--ss-red-primary);">Reddit COPPA Discussion</a>
+                </p>
+            </div>
+
+            <!-- Cost Structure Normalization Section -->
+            <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 2rem; border: 2px solid rgba(34,197,94,0.3); margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 1.5rem; color: #166534; font-size: 1.2rem;">Cost Structure Normalization (SDE Calculation)</h4>
+                <p style="font-size: 0.9rem; color: var(--gray-700); margin-bottom: 1.5rem;">
+                    To calculate Seller Discretionary Earnings (SDE) for valuation multiples, costs must be normalized to reflect market-rate operations,
+                    even if the founder currently works for free. This prevents overvaluation based on unsustainable cost structures.
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <!-- Management Add-Back -->
+                    <div style="background: white; padding: 1.25rem; border-radius: 12px;">
+                        <h5 style="color: #166534; margin-bottom: 0.75rem; font-size: 1rem;">Management Add-Back</h5>
+                        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: var(--gray-700);">
+                            <li>Channel Manager salary: <strong>$60K-$80K/year</strong></li>
+                            <li>Content Director role: <strong>$40K-$50K/year</strong></li>
+                            <li>Currently absorbed by founder</li>
+                            <li>Must deduct for realistic SDE</li>
+                        </ul>
+                    </div>
+
+                    <!-- Content Replacement Cost -->
+                    <div style="background: white; padding: 1.25rem; border-radius: 12px;">
+                        <h5 style="color: #166534; margin-bottom: 0.75rem; font-size: 1rem;">Content Replacement Cost</h5>
+                        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: var(--gray-700);">
+                            <li>3D Animation: <strong>$1,500-$3,000/minute</strong></li>
+                            <li>Current: ~$6K per 3-4 min song</li>
+                            <li>Industry average: $5K-$25K/min</li>
+                            <li>Maintenance CapEx: <strong>$70K-$85K/year</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1rem;">
+                    <thead>
+                        <tr style="background: #bbf7d0;">
+                            <th style="padding: 0.6rem; text-align: left; border: 1px solid #86efac;">Cost Item</th>
+                            <th style="padding: 0.6rem; text-align: center; border: 1px solid #86efac;">Current (Owner)</th>
+                            <th style="padding: 0.6rem; text-align: center; border: 1px solid #86efac;">Normalized</th>
+                            <th style="padding: 0.6rem; text-align: left; border: 1px solid #86efac;">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 0.6rem; border: 1px solid #eee;">Owner/Manager Labor</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center;">$0</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600; color: #dc2626;">$70K</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee;">Market rate for channel management</td>
+                        </tr>
+                        <tr style="background: var(--gray-50);">
+                            <td style="padding: 0.6rem; border: 1px solid #eee;">Content Production</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center;">$70K-$85K</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600;">$70K-$85K</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee;">Already at market rate (outsourced)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.6rem; border: 1px solid #eee;">Platform/Tech Costs</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center;">$5K</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee; text-align: center; font-weight: 600;">$10K</td>
+                            <td style="padding: 0.6rem; border: 1px solid #eee;">Includes app maintenance, hosting</td>
+                        </tr>
+                        <tr style="background: #dcfce7; font-weight: 600;">
+                            <td style="padding: 0.6rem; border: 1px solid #86efac;">Total Normalized Costs</td>
+                            <td style="padding: 0.6rem; border: 1px solid #86efac; text-align: center;">$75K-$90K</td>
+                            <td style="padding: 0.6rem; border: 1px solid #86efac; text-align: center; color: #166534;">$150K-$165K</td>
+                            <td style="padding: 0.6rem; border: 1px solid #86efac;">~2x current (realistic for buyer)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="font-size: 0.85rem; color: #166534; line-height: 1.7; margin: 0;">
+                    <strong>Implication:</strong> Any SDE-based valuation multiple must use normalized costs. Current "high margins" reflect founder labor subsidies,
+                    not sustainable business economics. A buyer inheriting the channel would face ~$70K/year in additional management costs.
+                    Source: <a href="https://flippa.com/blog/business-valuation-multipliers-by-industry/" target="_blank" style="color: var(--ss-red-primary);">Flippa Valuation Guidelines</a>
                 </p>
             </div>
 
@@ -2541,7 +2829,7 @@
                         <strong style="color: var(--ss-red-primary);">[6]</strong> <strong>Live Entertainment Revenue Projection ($300K-$500K/year):</strong> <strong style="color: #e67e22;">PROJECTION ONLY - NOT YET EXECUTED.</strong> Based on MENA theater-scale benchmarks: Spacetoon Memories Live (Zabeel Theatre, 600 seats, AED 100+ tickets). Mansour Festival (annual event, AED 65+ tickets). Model: 20 shows/year × 600-900 seats × AED 75 avg × 70% capacity = $300-500K gross. Comparable: Spacetoon hosts 500+ themed events annually in Saudi, UAE, Qatar.
                     </div>
                     <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px; border-left: 4px solid var(--ss-red-primary);">
-                        <strong style="color: var(--ss-red-primary);">[7]</strong> <strong>Saudi Arabia Entertainment Market:</strong> $2.08B (2024) → $5.58B by 2033 at 11.61% CAGR per <a href="https://www.astuteanalytica.com/industry-report/saudi-arabia-entertainment-and-amusement-market" target="_blank" style="color: var(--ss-red-primary);">Astute Analytica</a>. Additional sources: <a href="https://www.kenresearch.com/industry-reports/saudi-arabia-leisure-and-entertainment-market" target="_blank" style="color: var(--ss-red-primary);">Ken Research</a>, <a href="https://www.mordorintelligence.com/industry-reports/middle-east-media-and-entertainment-market" target="_blank" style="color: var(--ss-red-primary);">Mordor Intelligence</a>. Children's entertainment centers: $124M (2025) → $219M by 2034 per <a href="https://www.imarcgroup.com/saudi-arabia-childrens-entertainment-centers-market" target="_blank" style="color: var(--ss-red-primary);">IMARC Group</a>.
+                        <strong style="color: var(--ss-red-primary);">[7]</strong> <strong>Saudi Arabia Entertainment Market:</strong> $2.08B (2024) → $5.58B by 2033 at 11.61% CAGR per <a href="https://www.astuteanalytica.com/industry-report/saudi-arabia-entertainment-and-amusement-market" target="_blank" style="color: var(--ss-red-primary);">Astute Analytica</a>. <strong>Family entertainment share: 47.44%</strong> (2024) per <a href="https://www.mordorintelligence.com/industry-reports/saudi-arabia-entertainment-and-amusement-market" target="_blank" style="color: var(--ss-red-primary);">Mordor Intelligence</a>. Additional sources: <a href="https://www.kenresearch.com/industry-reports/saudi-arabia-leisure-and-entertainment-market" target="_blank" style="color: var(--ss-red-primary);">Ken Research</a>. Children's entertainment centers: $124M (2025) → $219M by 2034 per <a href="https://www.imarcgroup.com/saudi-arabia-childrens-entertainment-centers-market" target="_blank" style="color: var(--ss-red-primary);">IMARC Group</a>.
                     </div>
                     <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px; border-left: 4px solid var(--ss-red-primary);">
                         <strong style="color: var(--ss-red-primary);">[8]</strong> <strong>Educational Apps Revenue ($350K/year):</strong> <strong style="color: #e67e22;">PROJECTION ONLY - NO CURRENT EDUCATIONAL APP.</strong> Only existing app is a video player for Karazah content. Full educational app requires development investment. Model: 10,000 subscribers × $4.99/month × 12 months = $599K gross. At 60% margin after platform fees = $359K. Requires both development AND marketing investment. Benchmark: Fruit Punch Music ($3.99/mo).
@@ -2625,10 +2913,10 @@
                             <td><a href="https://www.pif.gov.sa/en/news-and-insights/press-releases/2025/pif-completes-acquisition-of-54-percent-of-media-company-mbc-group/" target="_blank" style="color: var(--ss-red-primary);">PIF Official</a></td>
                             <td>Jan 2025</td>
                         </tr>
-                        <tr>
+                        <tr style="background: #fef3c7;">
                             <td>
-                                <div class="table-asset-name">Moonbug/CoComelon Acquisition</div>
-                                <div class="table-asset-desc">Candle Media acquired Moonbug Entertainment</div>
+                                <div class="table-asset-name">Moonbug/CoComelon Acquisition <span style="color: #b45309; font-size: 0.75rem; font-weight: 600;">⚠️ UNICORN</span></div>
+                                <div class="table-asset-desc">Candle Media acquired Moonbug Entertainment. <strong style="color: #b45309;">NOT a direct comparable</strong> — strategic "unicorn" transaction with 170M+ subs, multi-platform distribution, and Blackstone backing. 30x+ EBITDA multiple is outlier, not benchmark.</div>
                             </td>
                             <td class="table-value">$3 Billion</td>
                             <td><a href="https://variety.com/2021/biz/news/moonbug-acquisition-disney-tom-staggs-kevin-mayer-1235124553/" target="_blank" style="color: var(--ss-red-primary);">Variety</a>, <a href="https://deadline.com/2021/11/cocomelon-blippi-moonbug-entertainment-1234868432/" target="_blank" style="color: var(--ss-red-primary);">Deadline</a></td>
@@ -2674,14 +2962,48 @@
                 </table>
             </div>
 
+            <!-- Applicable Valuation Multiples -->
+            <div style="background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-radius: 16px; padding: 2rem; border: 2px solid rgba(139,92,246,0.3); margin: 2rem 0;">
+                <h4 style="margin-bottom: 1.5rem; color: #5b21b6; font-size: 1.2rem;">Applicable Valuation Multiples (Karazah-Specific)</h4>
+                <p style="font-size: 0.9rem; color: var(--gray-700); margin-bottom: 1.5rem;">
+                    <strong>Do NOT use Moonbug/CoComelon (30x EBITDA) as benchmark.</strong> Appropriate multiples for a $2M Arabic kids channel with single-platform dependency:
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem;">
+                    <div style="background: white; padding: 1.25rem; border-radius: 12px; border-left: 4px solid #8b5cf6;">
+                        <h5 style="color: #5b21b6; margin-bottom: 0.75rem; font-size: 1rem;">Financial Buyer (Marketplace)</h5>
+                        <div style="font-size: 1.75rem; font-weight: 700; color: #5b21b6; margin-bottom: 0.5rem;">2.0x - 3.5x SDE</div>
+                        <p style="font-size: 0.85rem; color: var(--gray-600); margin: 0;">
+                            Standard YouTube channel multiples per <a href="https://flippa.com/blog/business-valuation-multipliers-by-industry/" target="_blank" style="color: var(--ss-red-primary);">Flippa</a> / <a href="https://empireflippers.com" target="_blank" style="color: var(--ss-red-primary);">Empire Flippers</a>.
+                            Assumes buyer takes over operations.
+                        </p>
+                    </div>
+
+                    <div style="background: white; padding: 1.25rem; border-radius: 12px; border-left: 4px solid #22c55e;">
+                        <h5 style="color: #166534; margin-bottom: 0.75rem; font-size: 1rem;">Strategic Buyer (MBC/Spacetoon)</h5>
+                        <div style="font-size: 1.75rem; font-weight: 700; color: #166534; margin-bottom: 0.5rem;">4.0x - 6.0x EBITDA</div>
+                        <p style="font-size: 0.85rem; color: var(--gray-600); margin: 0;">
+                            Premium for "Arabic Language Moat," original IP, and educational positioning.
+                            Synergy value with existing kids networks.
+                        </p>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.85rem; color: #5b21b6; line-height: 1.7; margin: 0;">
+                    <strong>Applied to Karazah:</strong> At normalized SDE of ~$50K (after cost adjustments), financial buyer value = $100K-$175K.
+                    However, asset-based valuation ($1.8M-$2.5M) reflects IP/content library value not captured in current earnings.
+                    Strategic buyer pays premium for audience access and Arabic content gap opportunity.
+                </p>
+            </div>
+
             <div style="margin-top: 2rem; padding: 1.5rem; background: var(--white); border-radius: 12px; border-left: 4px solid var(--ss-red-primary);">
-                <h4 style="margin-bottom: 0.75rem; color: var(--black);">Valuation Methodology</h4>
+                <h4 style="margin-bottom: 0.75rem; color: var(--black);">Valuation Methodology Summary</h4>
                 <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem;">
                     <strong>This is an ASSET-BASED valuation, not revenue-based.</strong> Current revenue (~$12K/year) reflects limited production due to funding constraints—NOT the value of assets built.
                     <strong>$500K+ already invested</strong> in startup costs, 89 original 3D productions, brand development, and studio infrastructure.
                     The valuation combines: (1) Subscriber Base Value ($0.50-$1.00 per subscriber × 752K = $376K-$752K, <em>COPPA-adjusted for Made-for-Kids content</em>),
                     (2) Content Library (89 original 3D productions at ~$8,200/video = $730K), (3) Production Company (SS Media Productions LLC with B2B client relationships),
-                    and (4) Founder/Leadership retention. <strong>DCF Analysis:</strong> 25% discount rate (MENA private company), 3% terminal growth, 30% DLOM applied.
+                    and (4) Founder/Leadership retention. <strong>DCF Analysis:</strong> 19-23% discount rate (build-up method), 3% terminal growth, 30% DLOM applied.
                     The final range of <strong>$1.8M-$2.5M</strong> reflects COPPA restrictions on kids content (no notification bell, no comments, no personalized ads). Acquirer gets proven foundation ready to scale.
                     <em>Note: Ongoing production (~$70-85K/year) required for content continuity and brand relevance.</em>
                 </p>
@@ -2763,6 +3085,110 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+
+        // Citation Tooltip System
+        const citationData = {
+            1: { title: 'Obai Sukar Credentials', content: 'Syrian-American entrepreneur, Flint MI. Student Academy Award (Silver, 2016) for sound design. Former Head of Sound at Spacetoon (2006-2010) — started as youngest employee at age 17. Gulf Film Festival First Prize (2017). Co-founded Radio Al-Kul (500K+ daily listeners). 25+ years media & IT experience. Featured in: Washington Post, AP News, Business Insider, Yahoo Finance.' },
+            2: { title: 'SS Media Productions LLC', content: 'Michigan Secretary of State corporate registration, Flint, MI. Verified via Dun & Bradstreet. Client contracts on file: Roya TV (Jordan), NewBoy, Baraem (BeIN), Al Fan Group, Ibdaa Kids, Mancini Productions.' },
+            3: { title: 'Tamim & Tasnim Channel', content: 'CLIENT PROJECT — YouTube channel @Tamimtasnimtv. Not included in acquisition - owned by client. Built from scratch by SS Productions as B2B service, demonstrating channel-building capability.' },
+            4: { title: 'Karazah Channel Metrics', content: '752K Subscribers, 317M+ Views as of December 2025. Direct verification from YouTube channel. Third-party verification via SpeakRJ Analytics.' },
+            5: { title: 'Content Library Valuation', content: '1,135+ total videos including 89 original 3D animated productions. Original productions valued at ~$8,200/video (total $730K). Karazah Business Plan June 2019 documents production cost of $4,945/month.' },
+            6: { title: 'Live Entertainment Revenue', content: 'PROJECTION: $300K-$500K/year based on MENA theater-scale benchmarks. Spacetoon Memories Live (Zabeel Theatre, 600 seats, AED 100+ tickets). Model: 20 shows/year × 600-900 seats × AED 75 avg × 70% capacity.' },
+            7: { title: 'Saudi Arabia Entertainment Market', content: '$2.08B (2024) → $5.58B by 2033 at 11.61% CAGR per Astute Analytica. Family entertainment share: 47.44% (2024) per Mordor Intelligence. Children\'s entertainment centers: $124M → $219M by 2034.' },
+            8: { title: 'Educational Apps Revenue', content: 'PROJECTION: $350K/year. No current educational app exists. Model: 10,000 subscribers × $4.99/month × 12 months = $599K gross. At 60% margin = $359K. Requires development AND marketing investment.' },
+            9: { title: 'Arabic Learning Market', content: '$4.78B (2025) → $10.61B (2030) at 17.3% CAGR per Grand View Research. Arabic segment growing driven by diaspora demand.' },
+            10: { title: 'Merchandise Revenue', content: 'PROJECTION: $400K/year. No current merchandise. Hypothetical: 5% royalty on $4M licensed product sales. Requires manufacturing partnerships. Benchmarks: Modhesh (Dubai), Mansour (Emirati).' },
+            11: { title: 'Middle East Toy Market', content: '$4.5B (2025 est.) → $9B by 2033 at 8.17% CAGR per IMARC Group. Licensed toy segment: ~$920M. Saudi Arabia leads with 39.7% market share.' },
+            12: { title: 'Brand Partnerships Revenue', content: 'PROJECTION: $500K/year. Model: 20 sponsored campaigns × $25K average. Family-friendly YouTube sponsors pay $15K-$50K per video. Educational content commands 2-3x premium.' },
+            13: { title: 'Sponsored Video Rates', content: '$15K-$50K per Business Insider. Kids/Family channels with 500K+ subs command premium rates for sponsored content.' },
+            14: { title: 'Content Licensing Revenue', content: 'PROJECTION: $200K/year. Model: 10 licensing deals × $20K average. SS Productions has existing B2B clients demonstrating market access.' },
+            15: { title: 'Streaming Platform Demand', content: 'Netflix MENA content investment per Variety. Disney+ Hotstar Arabic expansion. Regional platforms (Shahid, OSN) actively commissioning local children\'s content.' },
+            16: { title: 'CEO Employment Package', content: 'OPTIONAL: $150K-$200K/year operating expense. Competitive executive salary for media company CEO per Glassdoor. Founder retention ensures brand continuity and knowledge transfer.' },
+            17: { title: 'YouTube Revenue Projection', content: 'PROJECTION: $36-60K/year with growth. Current: ~2M views/month = $12K/year. Real CPM: $0.40-$0.55 (Made-for-Kids/COPPA). With 3-5x content increase → $36-60K/year.' },
+            18: { title: '3D Animation Costs', content: '$5K-$25K per minute industry standard per VideoIgniter, Vidico, Flearning Studio. Karazah\'s ~$6K/song (3-4 min) reflects efficient outsourced production.' },
+            19: { title: 'YouTube Kids Content CPM', content: '$1-$5/1000 views per Uscreen 2025, Travelpayouts. Made-for-Kids content: $0.25-$5 CPM due to COPPA ad restrictions. Arabic content CPM typically $2-6.' },
+            20: { title: 'MENA Media Market', content: '$44B (2025) → $70.47B (2030) at 9.8% CAGR per Mordor Intelligence. VOD leads at 30% revenue share. Only 3% of online content is Arabic.' },
+            21: { title: 'Middle East Toys Market', content: '$4.5B → $9B (2033) at 8.17% CAGR per IMARC Group. Educational toys: $1.3B → $2.3B. Saudi Arabia leads market.' },
+            22: { title: 'Arabic Language Learning', content: '$4.78B (2025) → $10.61B (2030) at 17.3% CAGR per Research & Markets. Kids educational apps: $7.8B → $24.6B (13.7% CAGR).' },
+            23: { title: 'YouTube Sponsorship Rates', content: '$2K-$50K/video per Descript 2025, ThoughtLeaders. Channels with 100K+ subscribers command premium. Family/kids niche: 2-3x premium.' },
+            24: { title: 'Kids Content Streaming Value', content: 'CoComelon: 124.5M views H1 2024 per Variety. Kids content is #2 category on Netflix. Vital for subscriber retention per CNBC.' },
+            25: { title: 'MBC Group Acquisition', content: 'PIF acquired 54% of MBC Group for $1.99B (Jan 2025), implying $3.7B total valuation. MBC operates 17 TV channels including MBC3 (kids) reaching 150M+ households.' }
+        };
+
+        // Create tooltip container
+        const tooltip = document.createElement('div');
+        tooltip.className = 'citation-tooltip';
+        tooltip.innerHTML = `
+            <div class="citation-tooltip-header">
+                <span class="citation-tooltip-number"></span>
+                <button class="citation-tooltip-close" aria-label="Close">×</button>
+            </div>
+            <div class="citation-tooltip-content"></div>
+        `;
+        document.body.appendChild(tooltip);
+
+        const tooltipNumber = tooltip.querySelector('.citation-tooltip-number');
+        const tooltipContent = tooltip.querySelector('.citation-tooltip-content');
+        const tooltipClose = tooltip.querySelector('.citation-tooltip-close');
+
+        // Close tooltip
+        function closeTooltip() {
+            tooltip.classList.remove('active');
+        }
+
+        tooltipClose.addEventListener('click', closeTooltip);
+        document.addEventListener('click', (e) => {
+            if (!tooltip.contains(e.target) && !e.target.classList.contains('citation-ref')) {
+                closeTooltip();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeTooltip();
+        });
+
+        // Convert superscript citations to clickable refs
+        document.querySelectorAll('sup').forEach(sup => {
+            const text = sup.textContent.trim();
+            const match = text.match(/^\[?(\d+)\]?$/);
+            if (match) {
+                const num = parseInt(match[1]);
+                if (citationData[num]) {
+                    sup.innerHTML = `<span class="citation-ref" data-citation="${num}">[${num}]</span>`;
+                }
+            }
+        });
+
+        // Handle citation clicks
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('citation-ref')) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const num = e.target.dataset.citation;
+                const data = citationData[num];
+
+                if (data) {
+                    tooltipNumber.textContent = `[${num}]`;
+                    tooltipContent.innerHTML = `<strong>${data.title}</strong><br><br>${data.content}`;
+
+                    // Position tooltip
+                    const rect = e.target.getBoundingClientRect();
+                    const tooltipRect = tooltip.getBoundingClientRect();
+
+                    let left = rect.left + (rect.width / 2) - 225;
+                    let top = rect.bottom + 10;
+
+                    // Keep within viewport
+                    if (left < 10) left = 10;
+                    if (left + 450 > window.innerWidth) left = window.innerWidth - 460;
+                    if (top + 300 > window.innerHeight) top = rect.top - 310;
+
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
+                    tooltip.classList.add('active');
+                }
+            }
         });
     </script>
 </body>
