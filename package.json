@@ -1,0 +1,12 @@
+{
+  "name": "karazah-valuation",
+  "version": "1.0.0",
+  "description": "Karazah Channel Valuation Analysis",
+  "scripts": {
+    "start": "python -m http.server 8202",
+    "serve": "python -m http.server 8202"
+  },
+  "config": {
+    "port": 8202
+  }
+}
